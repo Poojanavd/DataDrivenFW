@@ -5,10 +5,10 @@ import java.util.Properties;
 
 public class BaseTest {
 
-	Properties prop = null;
-	FileInputStream fis;
+	public static Properties prop = null;
+	public static FileInputStream fis;
 
-	public void initialize() {
+	public static void initialize() {
 		if (prop == null) {
 			prop = new Properties();
 			try {
