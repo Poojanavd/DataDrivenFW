@@ -2,6 +2,7 @@ package ddPack.test;
 
 import java.util.HashMap;
 
+import org.testng.SkipException;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -42,6 +43,9 @@ public class LoginTest extends BaseTest {
 		ExtentReports eReport = ExtentManager.getInstance();
 		ExtentTest eTest = eReport.startTest("LoginTest");
 		eTest.log(LogStatus.INFO,"login test started");
-//		if(DataUtil.isRunnable(xls, "LoginTest", "Testcases"))
+		if(!(DataUtil.isRunnable(xls, "LoginTest", "Testcases"))|| map.get("Runmode").equals("N")) {
+			eTest.log(LogStatus.SKIP, "Skipping the test as the run mode is set to N");
+			throw new SkipException("skipping the test as it is set to N");
+		}
 	}
 }
